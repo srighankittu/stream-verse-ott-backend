@@ -58,15 +58,15 @@ router.get("/latestMovies", userMiddleware, async (req, res) => {
   try {
     const url =
       "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
-    // const options = {
-    //   method: "GET",
-    //   headers: {
-    //     accept: "application/json",
-    //     Authorization:
-    //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
-    //   },
-    // };
-    const latestMovies = await fetch(url, process.env.OPTIONS);
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
+      },
+    };
+    const latestMovies = await fetch(url, options);
     const json = await latestMovies.json();
     res.send(json);
   } catch (error) {
@@ -78,15 +78,15 @@ router.get("/video/:id", userMiddleware, async (req, res) => {
   try {
     const movie_id = req.params.id;
     const url = `https://api.themoviedb.org/3/movie/${movie_id}/videos?language=en-US`;
-    // const options = {
-    //   method: "GET",
-    //   headers: {
-    //     accept: "application/json",
-    //     Authorization:
-    //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
-    //   },
-    // };
-    const video = await fetch(url, process.env.OPTIONS);
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
+      },
+    };
+    const video = await fetch(url, options);
     const json = await video.json();
     res.send(json);
   } catch (error) {
