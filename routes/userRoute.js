@@ -11,6 +11,9 @@ dotenv.config();
 const router = Router();
 const secret = config.JWT_SECRET;
 
+router.get("/", (req, res) => {
+  res.send("hello");
+});
 router.post("/signup", async (req, res) => {
   const { email, password, fullname } = req.body;
   try {
