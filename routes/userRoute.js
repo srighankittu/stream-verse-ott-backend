@@ -93,4 +93,67 @@ router.get("/video/:id", userMiddleware, async (req, res) => {
     res.status(500).send("Error while fetching movies");
   }
 });
+
+router.get("/popularmovies", userMiddleware, async (req, res) => {
+  // const { email, password } = req.body;
+  try {
+    const url =
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
+      },
+    };
+    const latestMovies = await fetch(url, options);
+    const json = await latestMovies.json();
+    res.send(json);
+  } catch (error) {
+    res.status(500).send("Error while fetching movies");
+  }
+});
+
+router.get("/topratedmovies", userMiddleware, async (req, res) => {
+  // const { email, password } = req.body;
+  try {
+    const url =
+      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
+      },
+    };
+    const latestMovies = await fetch(url, options);
+    const json = await latestMovies.json();
+    res.send(json);
+  } catch (error) {
+    res.status(500).send("Error while fetching movies");
+  }
+});
+
+router.get("/upcomingmovies", userMiddleware, async (req, res) => {
+  // const { email, password } = req.body;
+  try {
+    const url =
+      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjNmZjNkMTZhOGRiYjZmNGY3ZDM1ZTcxMGU4Mzc4NSIsInN1YiI6IjY1ODdkMDBlNDc3MjE1NTk4MzQzY2RiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XycOjjp8_-CS2cJInsg7tHOt2G3K-HAoo9S5r5cfmZU",
+      },
+    };
+    const latestMovies = await fetch(url, options);
+    const json = await latestMovies.json();
+    res.send(json);
+  } catch (error) {
+    res.status(500).send("Error while fetching movies");
+  }
+});
 export default router;
